@@ -4,10 +4,11 @@
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
   };
 
   outputs = { self, ... } @inputs: let
-
     lib = inputs.nixpkgs-stable.lib;
 
     # Each system that this configuration's packages & other system-dependant outputs support.
