@@ -1,7 +1,7 @@
 { inputs, pkgs-unstable, ... }:
 
 let
-  wrapper = inputs.wrapper-modules.lib.evalModule ./module.nix;
+  wrapper = inputs.wrapper-modules.lib.evalModule ./wrapper.nix;
 in
 wrapper.config.wrap {
   pkgs = pkgs-unstable;
