@@ -9,6 +9,11 @@
     mangowm.inputs.nixpkgs.follows = "nixpkgs-unstable";
     noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.home-manager.follows = "";
+      inputs.darwin.follows = "";
+    };
   };
 
   outputs = { self, ... } @inputs: let
