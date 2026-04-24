@@ -33,6 +33,8 @@
     forEachSystem = perSystem:
       lib.genAttrs systems perSystem;
   in {
+    nixosConfigurations = import ./nixos/hosts args;
+
     packages = forEachSystem (system:
       import ./packages (getArgsFor system)
     );
