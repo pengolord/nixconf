@@ -22,5 +22,7 @@ wrapper.config.wrap {
     background_opacity         0.5
     dynamic_background_opacity yes
     shell                      ${getExe zsh}
+
+    include ~/.cache/matugen/kitty.conf
   '';
 }
