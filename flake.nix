@@ -2,18 +2,28 @@
   description = "Unified configuration for all of my nix-related settings, packages, nixos configurations, and more.";
 
   inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    # === Package Repositories ===
+    nixpkgs-stable.url   = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
-    mangowm.url = "github:mangowm/mango";
-    mangowm.inputs.nixpkgs.follows = "nixpkgs-unstable";
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+
+    # === Helpers ===
+    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+
     agenix = {
       url = "github:ryantm/agenix";
       inputs.home-manager.follows = "";
       inputs.darwin.follows = "";
     };
+
+    # === Program Repositories ===
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
   };
 
   outputs = { self, ... } @inputs: let
