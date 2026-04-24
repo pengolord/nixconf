@@ -4,8 +4,10 @@
   inputs = {
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+    mangowm.url = "github:mangowm/mango";
+    mangowm.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
   };
 
   outputs = { self, ... } @inputs: let
