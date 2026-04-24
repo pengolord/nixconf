@@ -1,10 +1,14 @@
-{ lib, ... }:
+{ lib, self, ... }:
 
 { config, ... }: let
   inherit (lib) mkEnableOption mkIf;
 
   cfg = config.userModules.pengo;
 in {
+  imports = [
+    self.nixosModules.shell
+  ];
+
   options.userModules.pengo = {
     enable = mkEnableOption "Adds pengo as a user.";
     isAdministrator = mkEnableOption "Adds pengo to the 'wheel' group, among other privileges.";
