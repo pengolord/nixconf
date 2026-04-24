@@ -8,6 +8,7 @@ in {
   imports = [
     self.nixosModules.shell
     self.nixosModules.desktop
+    self.nixosModules.secrets
   ];
 
   options.userModules.pengo = {
