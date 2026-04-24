@@ -8,6 +8,7 @@
     mangowm.url = "github:mangowm/mango";
     mangowm.inputs.nixpkgs.follows = "nixpkgs-unstable";
     noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+    apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
   };
 
   outputs = { self, ... } @inputs: let
