@@ -12,6 +12,8 @@
   };
   pkgs-self = self.packages.${system};
 in {
+  imports = [ inputs.mangowm.nixosModules.mango ];
+
   options.userModules.pengo.desktop = {
     enable = mkEnableOption "Enables pengo's desktop environment & apps, currently using mangowm.";
   };
