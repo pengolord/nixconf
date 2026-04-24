@@ -4,8 +4,7 @@ let
   inherit (lib) getExe;
 
   inherit (pkgs-unstable) bibata-cursors;
-  inherit (pkgs-self) kitty;
-  noctalia = inputs.noctalia-shell.packages.${system}.default;
+  inherit (pkgs-self) kitty noctalia;
 in
 inputs.wrapper-modules.wrappers.mangowc.wrap {
   pkgs = pkgs-unstable;
