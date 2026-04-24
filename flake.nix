@@ -35,6 +35,8 @@
   in {
     nixosConfigurations = import ./nixos/hosts args;
 
+    nixosModules = import ./nixos/modules args;
+
     packages = forEachSystem (system:
       import ./packages (getArgsFor system)
     );
