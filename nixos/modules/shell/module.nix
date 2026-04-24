@@ -7,7 +7,7 @@
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-self = self.packages.${system};
 
-  inherit (pkgs-self) zsh;
+  inherit (pkgs-self) git neovim zsh;
 in {
   options.userModules.pengo.shell = {
     enable = mkOption {
@@ -24,7 +24,7 @@ in {
 
     users.users.pengo = {
       shell = getExe zsh;
-      packages = [ zsh ];
+      packages = [ git neovim zsh ];
     };
   };
 }
