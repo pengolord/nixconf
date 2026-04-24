@@ -1,4 +1,4 @@
-{ lib, ... } @args:
+{ lib, self, ... } @args:
 
 let
   inherit (lib) genAttrs nixosSystem;
@@ -12,7 +12,7 @@ let
   mkConfig = hostname:
     nixosSystem {
       modules = [
-        ./hosts/${hostname}/configuration.nix
+        ./${hostname}/configuration.nix
       ];
 
       specialArgs = args;
