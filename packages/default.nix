@@ -9,8 +9,9 @@ let
   hasPackageFile = path: pathExists ./${path}/package.nix;
   packageNames = filter hasPackageFile (contentsOf ./.);
 
-  packages = genAttrs packageNames (packageName:
-    import ./${packageName}/package.nix args
-  );
+  mkPackage = packageName:
+    import ./${packageName}/package.nix args;
+
+  packages = genAttrs packageNames mkPackage;
 in
 packages
