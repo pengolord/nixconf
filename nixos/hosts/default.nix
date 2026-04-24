@@ -12,6 +12,7 @@ let
   mkConfig = hostname:
     nixosSystem {
       modules = [
+        self.nixosModules.nix-settings
         ./${hostname}/configuration.nix
       ];
 
