@@ -34,6 +34,8 @@ inputs.wrapper-modules.wrappers.mangowc.wrap {
 
     cursor_theme = Bibata-Modern-Ice
     cursor_size = 24
+
+    source_optional = ~/.cache/matugen/mango.conf
   '';
 
   env.XCURSOR_SIZE = "24";
