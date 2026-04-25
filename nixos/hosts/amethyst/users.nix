@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, config, ... }:
 
 {
   imports = [ self.nixosModules.user ];
@@ -9,4 +9,5 @@
     desktop.enable = true;
   };
 
+  users.users.pengo.hashedPasswordFile = config.age.secrets.pengoHashedPasswordFile.path;
 }
