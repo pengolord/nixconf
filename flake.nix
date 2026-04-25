@@ -6,7 +6,9 @@
     nixpkgs-stable.url   = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # === System Dependencies ===
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
+    impermanence.url = "github:nix-community/impermanence";
 
     # === Helpers ===
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
