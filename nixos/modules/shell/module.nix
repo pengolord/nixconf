@@ -13,7 +13,7 @@ in {
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Sets up zsh & sets pengo's shell to pengo's wrapped version of it.";
+      description = "Sets up zsh & sets my shell to pengo's wrapped version of it.";
     };
   };
 

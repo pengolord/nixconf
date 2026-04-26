@@ -12,8 +12,8 @@ in {
   ];
 
   options.userModules.pengo = {
-    enable = mkEnableOption "Adds pengo as a user.";
-    isAdministrator = mkEnableOption "Adds pengo to the 'wheel' group, among other privileges.";
+    enable = mkEnableOption "Adds my user (pengo) as a user.";
+    isAdministrator = mkEnableOption "Adds my user to the 'wheel' group, among other privileges.";
   };
 
   config = mkIf cfg.enable {

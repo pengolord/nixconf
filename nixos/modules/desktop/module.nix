@@ -15,7 +15,7 @@ in {
   imports = [ inputs.mangowm.nixosModules.mango ];
 
   options.userModules.pengo.desktop = {
-    enable = mkEnableOption "Enables pengo's desktop environment & apps, currently using mangowm.";
+    enable = mkEnableOption "Enables my desktop environment & apps; currently using mangowm.";
   };
 
   config = mkIf cfg.enable {
