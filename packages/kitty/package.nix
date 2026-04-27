@@ -19,7 +19,7 @@ wrapper.config.wrap {
   pkgs = pkgs-unstable;
 
   configFile.content = ''
-    background_opacity         0.5
+    background_opacity         0.7
     dynamic_background_opacity yes
     shell                      ${getExe zsh}
 
