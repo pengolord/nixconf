@@ -10,4 +10,9 @@
   input_path = '${./kitty.conf}'
   output_path = '~/.cache/matugen/kitty.conf'
   post_hook = 'pkill -USR1 kitty >/dev/null 2>&1'
+
+  [templates.neovim]
+  input_path = '${./neovim.lua}'
+  output_path = '~/.cache/matugen/neovim.lua'
+  post_hook = 'pkill -SIGUSR1 nvim'
 ''
