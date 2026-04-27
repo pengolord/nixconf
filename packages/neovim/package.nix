@@ -24,6 +24,8 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     plenary-nvim
     nvim-web-devicons
     nvim-lspconfig
+    indent-blankline-nvim
+    base16-nvim
 
     # Completion
     blink-cmp

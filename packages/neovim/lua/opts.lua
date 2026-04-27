@@ -16,8 +16,9 @@ set.breakindent = true
 set.linebreak = true
 
 -- Visual settings
-set.scrolloff = 4
-set.termguicolors = false
+set.scrolloff = 6
+set.termguicolors = true
+set.cursorline = true
 
 -- Save undo history
 set.undofile = true
