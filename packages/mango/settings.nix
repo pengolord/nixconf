@@ -4,7 +4,7 @@ let
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {
   # === Keybinds ===
-  binds = concatLists [
+  bind = concatLists [
     # Super + 1-9 switches to tag 1-9
     (forTag1to9 (tag: "super, ${tag}, view, ${tag}, 0"))
 
