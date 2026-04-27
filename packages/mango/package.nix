@@ -10,12 +10,7 @@ inputs.wrapper-modules.wrappers.mangowc.wrap {
   pkgs = pkgs-unstable;
   package = inputs.mangowm.packages.${system}.default;
 
-  sourcedFiles = [
-    ./binds.conf
-    ./layout.conf
-    ./misc.conf
-    ./style.conf
-  ];
+  settings = import ./settings.nix;
 
   extraContent = ''
     # === Startup Programs ===
