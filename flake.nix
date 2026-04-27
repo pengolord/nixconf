@@ -11,7 +11,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # === Helpers ===
-    wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
+    wrapper-modules.url = "github:Pengolord/nix-wrapper-modules/mango";
 
     agenix = {
       url = "github:ryantm/agenix";
