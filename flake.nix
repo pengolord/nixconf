@@ -11,8 +11,7 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # === Helpers ===
-    wrapper-modules.url = "github:Pengolord/nix-wrapper-modules/mango";
-
+    wrapper-modules.url = "github:Pengolord/nix-wrapper-modules";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.home-manager.follows = "";
@@ -20,12 +19,11 @@
     };
 
     # === Program Repositories ===
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
     mangowm = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
   };
 
   outputs = { self, ... } @inputs: let
