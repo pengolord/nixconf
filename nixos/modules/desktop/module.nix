@@ -1,6 +1,13 @@
-{ inputs, lib, self, ... }:
-
-{ config, pkgs, ... }: let
+{
+  inputs,
+  lib,
+  self,
+  ...
+}: {
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) mkDefault mkEnableOption mkIf;
 
   cfg = config.userModules.pengo.desktop;
@@ -12,7 +19,7 @@
   };
   pkgs-self = self.packages.${system};
 in {
-  imports = [ inputs.mangowm.nixosModules.mango ];
+  imports = [inputs.mangowm.nixosModules.mango];
 
   options.userModules.pengo.desktop = {
     enable = mkEnableOption "Enables my desktop environment & apps; currently using mangowm.";

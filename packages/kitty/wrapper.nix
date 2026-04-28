@@ -1,5 +1,11 @@
-{ config, pkgs, lib, wlib, ... }: {
-  imports = [ wlib.modules.default ];
+{
+  config,
+  pkgs,
+  lib,
+  wlib,
+  ...
+}: {
+  imports = [wlib.modules.default];
 
   options = {
     configFile = lib.mkOption {

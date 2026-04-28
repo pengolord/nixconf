@@ -1,11 +1,13 @@
-{ inputs, lib, ... }:
-
-{ pkgs, ... }: let
+{
+  inputs,
+  lib,
+  ...
+}: {pkgs, ...}: let
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
 in {
   nix.package = pkgs-unstable.lixPackageSets.stable.lix;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings = {
     extra-substituters = [
       "https://nixos-apple-silicon.cachix.org"

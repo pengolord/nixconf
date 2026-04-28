@@ -1,7 +1,5 @@
-{ self, ... }:
-
-{
-  imports = [ self.nixosModules.user ];
+{self, ...}: {
+  imports = [self.nixosModules.user];
 
   userModules.pengo = {
     enable = true;

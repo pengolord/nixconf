@@ -1,6 +1,4 @@
-{ lib, ... } @args:
-
-let
+{lib, ...} @ args: let
   inherit (lib) genAttrs;
   inherit (builtins) attrNames filter pathExists readDir;
   contentsOf = dir: attrNames (readDir dir);
@@ -14,4 +12,4 @@ let
 
   packages = genAttrs packageNames mkPackage;
 in
-packages
+  packages

@@ -1,5 +1,8 @@
-{ inputs, pkgs-unstable, ... }:
-
+{
+  inputs,
+  pkgs-unstable,
+  ...
+}:
 inputs.wrapper-modules.wrappers.git.wrap {
   pkgs = pkgs-unstable;
 

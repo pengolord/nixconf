@@ -1,6 +1,8 @@
-{ lib, self, ... } @args:
-
-let
+{
+  lib,
+  self,
+  ...
+} @ args: let
   inherit (lib) genAttrs nixosSystem;
   inherit (builtins) attrNames filter pathExists readDir;
   contentsOf = dir: attrNames (readDir dir);
@@ -21,4 +23,4 @@ let
 
   nixosConfigurations = genAttrs hostnames mkConfig;
 in
-nixosConfigurations
+  nixosConfigurations

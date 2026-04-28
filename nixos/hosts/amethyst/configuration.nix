@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./hardware.nix
     ./impermanence.nix
@@ -21,7 +19,7 @@
       theme = "cuts";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "cuts" ];
+          selected_themes = ["cuts"];
         })
       ];
     };
@@ -35,12 +33,12 @@
     ];
   };
 
-  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
+  age.identityPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
 
   services.displayManager.gdm.enable = true;
 
   programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = [ "pengo" ];
+  users.groups.libvirtd.members = ["pengo"];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
   environment.systemPackages = with pkgs; [
@@ -52,7 +50,7 @@
   networking = {
     hostName = "amethyst";
     networkmanager.enable = true;
-    networkmanager.insertNameservers = [ "192.168.1.148" ];
+    networkmanager.insertNameservers = ["192.168.1.148"];
   };
 
   time.timeZone = "America/Denver";

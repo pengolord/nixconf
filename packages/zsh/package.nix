@@ -1,41 +1,47 @@
-{ inputs, lib, pkgs-self, pkgs-unstable, ... }:
-
-let
+{
+  inputs,
+  lib,
+  pkgs-self,
+  pkgs-unstable,
+  ...
+}: let
   inherit (lib) getExe;
 
   inherit (pkgs-self) git neovim;
   inherit (pkgs-unstable) eza zsh-syntax-highlighting zsh-autosuggestions;
 in
-inputs.wrapper-modules.wrappers.zsh.wrap ({ config, ... }: {
-  options = {
-    zshrc-sources = lib.mkOption {
-      type = lib.types.listOf lib.types.anything;
-      description = "Files sourced into zshrc";
-    };
-  };
+  inputs.wrapper-modules.wrappers.zsh.wrap (
+    {config, ...}: {
+      options = {
+        zshrc-sources = lib.mkOption {
+          type = lib.types.listOf lib.types.anything;
+          description = "Files sourced into zshrc";
+        };
+      };
 
-  config = {
-    pkgs = pkgs-unstable;
-    zshrc.content = ''
-      # === Dependencies ===
-      alias git='${getExe git}'
-      alias ls='${getExe eza}'
-      alias nvim='${getExe neovim}'
+      config = {
+        pkgs = pkgs-unstable;
+        zshrc.content = ''
+          # === Dependencies ===
+          alias git='${getExe git}'
+          alias ls='${getExe eza}'
+          alias nvim='${getExe neovim}'
 
-      # === Zsh Addons ===
-      source ${zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-      source ${zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+          # === Zsh Addons ===
+          source ${zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+          source ${zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-      # === Environment Variables ===
-      export EDITOR=nvim
+          # === Environment Variables ===
+          export EDITOR=nvim
 
-      ${builtins.concatStringsSep "\n" (map (file: "source ${file}") config.zshrc-sources)}
+          ${builtins.concatStringsSep "\n" (map (file: "source ${file}") config.zshrc-sources)}
 
-    '';
+        '';
 
-    zshrc-sources = [
-      ./aliases.zsh
-      ./prompt.zsh
-    ];
-  };
-})
+        zshrc-sources = [
+          ./aliases.zsh
+          ./prompt.zsh
+        ];
+      };
+    }
+  )

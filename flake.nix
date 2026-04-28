@@ -3,7 +3,7 @@
 
   inputs = {
     # === Package Repositories ===
-    nixpkgs-stable.url   = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # === System Dependencies ===
@@ -26,11 +26,14 @@
     };
   };
 
-  outputs = { self, ... } @inputs: let
+  outputs = {self, ...} @ inputs: let
     lib = inputs.nixpkgs-stable.lib;
 
     # Each system that this configuration's packages & other system-dependant outputs support.
-    systems = [ "x86_64-linux" "aarch64-linux" ];
+    systems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
 
     # Arguments that are passed to every imported file that does not require 'system' to be set.
     args = {
@@ -39,22 +42,25 @@
 
     # Arguments that are passed to every imported file that *does* require 'system' to be set. Includes all of the previous arguments too.
     getArgsFor = system:
-      args // {
+      args
+      // {
         inherit system;
         pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${system};
         pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
         pkgs-self = self.packages.${system};
       };
 
-    forEachSystem = perSystem:
-      lib.genAttrs systems perSystem;
+    forEachSystem = lib.genAttrs systems;
   in {
     nixosConfigurations = import ./nixos/hosts args;
 
     nixosModules = import ./nixos/modules args;
 
-    packages = forEachSystem (system:
-      import ./packages (getArgsFor system)
+    packages = forEachSystem (
+      system:
+        import ./packages (getArgsFor system)
     );
+
+    formatter = forEachSystem (system: inputs.nixpkgs-stable.legacyPackages.${system}.alejandra);
   };
 }

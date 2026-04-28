@@ -1,5 +1,8 @@
-{ inputs, pkgs-unstable, ... }:
-
+{
+  inputs,
+  pkgs-unstable,
+  ...
+}:
 # Note: I am a horrible neovimmer. please do not copy this config
 inputs.wrapper-modules.wrappers.neovim.wrap {
   pkgs = pkgs-unstable;
@@ -33,13 +36,14 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
 
     # Treesitter
     (nvim-treesitter.withPlugins (
-      plugins: with plugins; [
-        javascript
-        lua
-        nix
-        rust
-        typescript
-      ]
+      plugins:
+        with plugins; [
+          javascript
+          lua
+          nix
+          rust
+          typescript
+        ]
     ))
   ];
 

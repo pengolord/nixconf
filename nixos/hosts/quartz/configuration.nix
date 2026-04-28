@@ -1,6 +1,8 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
     ./users.nix
@@ -18,7 +20,7 @@
       theme = "cuts";
       themePackages = with pkgs; [
         (adi1090x-plymouth-themes.override {
-          selected_themes = [ "cuts" ];
+          selected_themes = ["cuts"];
         })
       ];
     };
@@ -32,7 +34,7 @@
     ];
   };
 
-  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 
   networking.hostName = "quartz";
 

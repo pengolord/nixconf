@@ -1,6 +1,12 @@
-{ lib, self, ... }:
-
-{ config, pkgs, ... }: let
+{
+  lib,
+  self,
+  ...
+}: {
+  config,
+  pkgs,
+  ...
+}: let
   inherit (lib) getExe mkDefault mkIf mkOption types;
 
   cfg = config.userModules.pengo.shell;
@@ -20,11 +26,11 @@ in {
   config = mkIf cfg.enable {
     programs.nano.enable = mkDefault false;
     programs.zsh.enable = mkDefault true;
-    environment.pathsToLink = [ "/share/zsh" ];
+    environment.pathsToLink = ["/share/zsh"];
 
     users.users.pengo = {
       shell = getExe zsh;
-      packages = [ git neovim zsh ];
+      packages = [git neovim zsh];
     };
   };
 }

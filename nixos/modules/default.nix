@@ -1,6 +1,4 @@
-{ lib, ... } @args:
-
-let
+{lib, ...} @ args: let
   inherit (lib) genAttrs;
   inherit (lib.modules) importApply;
   inherit (builtins) attrNames filter pathExists readDir;
@@ -17,4 +15,4 @@ let
 
   modules = genAttrs moduleNames pinNixosModule;
 in
-modules
+  modules
