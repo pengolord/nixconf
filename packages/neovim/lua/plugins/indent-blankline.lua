@@ -8,7 +8,7 @@ return {
     require("ibl").setup({
       indent = {
         highlight = {
-          "NonText"
+          "Comment"
         }
       }
     })

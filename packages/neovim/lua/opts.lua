@@ -8,6 +8,7 @@ set.relativenumber = true
 set.smarttab = true
 set.autoindent = true
 set.tabstop = 4
+set.shiftwidth = 4
 set.expandtab = false
 
 -- Line wrapping options
@@ -19,6 +20,8 @@ set.linebreak = true
 set.scrolloff = 6
 set.termguicolors = true
 set.cursorline = true
+set.fillchars = 'eob: '
+set.signcolumn = "auto"
 
 -- Save undo history
 set.undofile = true

@@ -26,6 +26,7 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     nvim-lspconfig
     indent-blankline-nvim
     base16-nvim
+    smart-splits-nvim
 
     # Completion
     blink-cmp
