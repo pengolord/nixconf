@@ -12,7 +12,7 @@ inputs.wrapper-modules.wrappers.mangowc.wrap {
 
   settings = import ./settings.nix;
 
-  extraContent = ''
+  extraConfig = ''
     # === Startup Programs ===
     exec-once = ${getExe noctalia}
 
