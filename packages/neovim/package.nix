@@ -38,6 +38,7 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     (nvim-treesitter.withPlugins (
       plugins:
         with plugins; [
+          java
           javascript
           lua
           nix
@@ -52,5 +53,6 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     nixd
     rust-analyzer
     typescript-language-server
+    java-language-server
   ];
 }

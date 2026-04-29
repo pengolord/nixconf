@@ -9,5 +9,6 @@ return {
     vim.lsp.enable('nixd')
     vim.lsp.enable('rust_analyzer')
     vim.lsp.enable('ts_ls')
+    vim.lsp.enable('java_language_server')
   end,
 }

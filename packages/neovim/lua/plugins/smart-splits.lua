@@ -16,10 +16,5 @@ return {
     vim.keymap.set('n', '<leader>k', require('smart-splits').move_cursor_up)
     vim.keymap.set('n', '<leader>l', require('smart-splits').move_cursor_right)
     vim.keymap.set('n', '<leader><Tab>', require('smart-splits').move_cursor_previous)
-    -- Swapping windows
-    vim.keymap.set('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-    vim.keymap.set('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-    vim.keymap.set('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-    vim.keymap.set('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
   end,
 }
