@@ -17,19 +17,17 @@ in {
 
   config = {
     nix.package = pkgs-unstable.lixPackageSets.stable.lix;
-    nix.settings =
-      {
-        experimental-features = ["nix-command" "flakes"];
-      }
-      // mkIf cfg.apple-silicon.enable {
-        extra-substituters = [
-          "https://nixos-apple-silicon.cachix.org"
-        ];
+    nix.settings = {
+      experimental-features = ["nix-command" "flakes"];
 
-        extra-trusted-public-keys = [
-          "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
-        ];
-      };
+      extra-substituters = mkIf cfg.apple-silicon.enable [
+        "https://nixos-apple-silicon.cachix.org"
+      ];
+
+      extra-trusted-public-keys = mkIf cfg.apple-silicon.enable [
+        "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
+      ];
+    };
 
     nixpkgs.config.allowUnfreePredicate = pkg:
       builtins.elem (getName pkg) [
