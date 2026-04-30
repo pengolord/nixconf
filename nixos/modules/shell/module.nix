@@ -26,6 +26,7 @@ in {
   config = mkIf cfg.enable {
     programs.nano.enable = mkDefault false;
     programs.zsh.enable = mkDefault true;
+    programs.direnv.enable = mkDefault true;
     environment.pathsToLink = ["/share/zsh"];
 
     users.users.pengo = {
