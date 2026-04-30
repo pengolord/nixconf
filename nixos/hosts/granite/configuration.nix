@@ -13,10 +13,13 @@
 
   time.timeZone = "America/Denver";
 
-  services.openssh.enable = true;
-  services.openssh.settings = {
-    PasswordAuthentication = false;
-    PermitRootLogin = "no";
+  services.openssh = {
+    enable = true;
+    ports = [22422];
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+    };
   };
 
   virtualisation.docker.enable = true;
