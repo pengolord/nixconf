@@ -9,6 +9,8 @@
     ./hardware.nix
   ];
 
+  nix.apple-silicon.enable = true;
+
   boot = {
     loader = {
       systemd-boot.enable = true;
