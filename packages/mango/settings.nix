@@ -1,8 +1,20 @@
-let
+{
+  lib,
+  pkgs-unstable,
+  pkgs-self,
+  ...
+}: let
+  inherit (lib) getExe;
   inherit (builtins) concatLists genList;
+
+  inherit (pkgs-unstable) grim wl-clipboard;
+  inherit (pkgs-self) kitty noctalia;
 
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {
+  # === Startup Programs ===
+  exec-once = "${getExe noctalia}";
+
   # === Keybinds ===
   bind = concatLists [
     # Super + 1-9 switches to tag 1-9
@@ -40,6 +52,19 @@ in {
       "super+alt, down, resizewin, +0, +50"
       "super+alt, left, resizewin, -50, +0"
       "super+alt, right, resizewin, +50, +0"
+    ]
+
+    [
+      # Keybinded Programs
+      "super, return, spawn, ${getExe kitty}"
+      "super, space, spawn, ${getExe noctalia} ipc call launcher toggle"
+
+      # Media keys
+      "none, XF86AudioRaiseVolume, spawn, ${getExe noctalia} ipc call volume increase"
+      "none, XF86AudioLowerVolume, spawn, ${getExe noctalia} ipc call volume decrease"
+      "none, XF86AudioMute, spawn, ${getExe noctalia} ipc call volume muteOutput"
+      "none, XF86MonBrightnessUp, spawn, ${getExe noctalia} ipc call brightness increase"
+      "none, XF86MonBrightnessDown, spawn, ${getExe noctalia} ipc call brightness decrease"
     ]
   ];
 
@@ -162,6 +187,22 @@ in {
   focus_cross_tag = 0;
   enable_floating_snap = 0;
   snap_distance = 30;
-  cursor_size = 72;
   drag_tile_to_tile = 1;
+  source_optional = "~/.cache/matugen/mango.conf";
+
+  # === Environment ===
+  env = let
+    home = "/home/pengo";
+  in [
+    "XDG_CONFIG_HOME,${home}/.config"
+    "XDG_CACHE_HOME,${home}/.cache"
+    "XDG_DATA_HOME,${home}/.local/share"
+    "XDG_DESKTOP_DIR,${home}/Desktop"
+    "XDG_DOCUMENTS_DIR,${home}/Documents"
+    "XDG_DOWNLOAD_DIR,${home}/Downloads"
+    "XDG_MUSIC_DIR,${home}/Music"
+    "XDG_PICTURES_DIR,${home}/Pictures"
+    "XDG_VIDEOS_DIR,${home}/Videos"
+    "GRIM_DEFAULT_DIR,${home}/Pictures/Screenshots"
+  ];
 }
