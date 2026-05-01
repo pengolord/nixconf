@@ -65,6 +65,9 @@ in {
       "none, XF86AudioMute, spawn, ${getExe noctalia} ipc call volume muteOutput"
       "none, XF86MonBrightnessUp, spawn, ${getExe noctalia} ipc call brightness increase"
       "none, XF86MonBrightnessDown, spawn, ${getExe noctalia} ipc call brightness decrease"
+
+      # Screenshots
+      "super, s, spawn_shell, ${getExe grim} - | tee $GRIM_DEFAULT_DIR/$(date +%y-%m-%d-%H:%M:%S).png | ${wl-clipboard}/bin/wl-copy"
     ]
   ];
 
