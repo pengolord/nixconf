@@ -137,7 +137,7 @@ in {
   # === Monitor settings ===
   monitorrule = [
     # Monitor for my desktop PC
-    "model:^24E4$, width:1920, height:1080, refresh:120, vrr:1, scale:1"
+    "model:24E4, width:1920, height:1080, refresh:144, vrr:1, scale:1"
     # Laptop monitor
     "name:^eDP-1$, width:2560, height:1600, refresh:60, scale:2"
   ];
