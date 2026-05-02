@@ -27,7 +27,6 @@ in {
 
   config = mkIf cfg.enable {
     users.users.pengo.packages = with pkgs-unstable // pkgs-self; [
-      bibata-cursors
       godot
       librewolf
       matugen
