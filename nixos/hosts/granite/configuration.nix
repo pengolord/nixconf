@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     ./hardware.nix
     ./users.nix
@@ -21,6 +21,10 @@
       PermitRootLogin = "no";
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    git
+  ];
 
   virtualisation.docker.enable = true;
 
