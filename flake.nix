@@ -2,27 +2,25 @@
   description = "Unified configuration for all of my nix-related settings, packages, nixos configurations, and more.";
 
   inputs = {
-    # === Package Repositories ===
+    # Package Repositories
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
 
-    # === System Dependencies ===
+    # System Dependencies
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     impermanence.url = "github:nix-community/impermanence";
 
-    # === Helpers ===
+    # Helpers
     wrapper-modules.url = "github:Pengolord/nix-wrapper-modules";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.home-manager.follows = "";
       inputs.darwin.follows = "";
-    };
-
-    # === Program Repositories ===
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
-    mangowm = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
