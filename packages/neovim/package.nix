@@ -1,11 +1,11 @@
 {
   inputs,
-  pkgs-unstable,
+  pkgs,
   ...
 }:
 # Note: I am a horrible neovimmer. please do not copy this config
 inputs.wrapper-modules.wrappers.neovim.wrap {
-  pkgs = pkgs-unstable;
+  inherit pkgs;
 
   settings.config_directory = ./.;
 
@@ -17,7 +17,7 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     '';
   };
 
-  specs.general = with pkgs-unstable.vimPlugins; [
+  specs.general = with pkgs.vimPlugins; [
     # Simple plugin loader
     lz-n
 
@@ -48,7 +48,7 @@ inputs.wrapper-modules.wrappers.neovim.wrap {
     ))
   ];
 
-  extraPackages = with pkgs-unstable; [
+  extraPackages = with pkgs; [
     lua-language-server
     nixd
     rust-analyzer

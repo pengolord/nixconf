@@ -12,11 +12,6 @@
 
   cfg = config.userModules.pengo.desktop;
   system = pkgs.stdenv.hostPlatform.system;
-  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
-  pkgs-unfree = import inputs.nixpkgs-unstable {
-    inherit system;
-    config.allowUnfree = true;
-  };
   pkgs-self = self.packages.${system};
 in {
   imports = [inputs.mangowm.nixosModules.mango];
@@ -26,14 +21,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    users.users.pengo.packages = with pkgs-unstable // pkgs-self; [
+    users.users.pengo.packages = with pkgs // pkgs-self; [
       godot
       librewolf
       matugen
       prismlauncher
       vesktop
       vscodium
-      pkgs-unfree.obsidian
+      obsidian
     ];
 
     programs.mango.enable = mkDefault true;

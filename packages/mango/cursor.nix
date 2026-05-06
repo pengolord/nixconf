@@ -1,9 +1,9 @@
 {
   lib,
-  pkgs-unstable,
+  pkgs,
   ...
 }: let
-  inherit (pkgs-unstable) bibata-cursors;
+  inherit (pkgs) bibata-cursors;
 in
   {config, ...}: {
     options = let

@@ -10,13 +10,11 @@
   inherit (lib) getName mkEnableOption mkIf;
 
   cfg = config.nix;
-  system = pkgs.stdenv.hostPlatform.system;
-  pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
 in {
   options.nix.apple-silicon.enable = mkEnableOption "Enables the apple-silicon chachix repo.";
 
   config = {
-    nix.package = pkgs-unstable.lixPackageSets.stable.lix;
+    nix.package = pkgs.lixPackageSets.stable.lix;
     nix.settings = {
       experimental-features = ["nix-command" "flakes"];
 

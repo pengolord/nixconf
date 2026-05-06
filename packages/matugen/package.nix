@@ -1,12 +1,12 @@
 {
   inputs,
-  pkgs-unstable,
+  pkgs,
   ...
 }: let
   wrapper = inputs.wrapper-modules.lib.evalModule ./wrapper.nix;
 in
   wrapper.config.wrap {
-    pkgs = pkgs-unstable;
+    inherit pkgs;
 
     configFile.content = import ./templates;
   }

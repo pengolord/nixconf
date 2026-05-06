@@ -1,14 +1,14 @@
 {
   inputs,
   lib,
+  pkgs,
   pkgs-self,
-  pkgs-unstable,
   ...
 }: let
   inherit (lib) getExe;
 
   inherit (pkgs-self) git neovim;
-  inherit (pkgs-unstable) eza zsh-syntax-highlighting zsh-autosuggestions;
+  inherit (pkgs) eza zsh-syntax-highlighting zsh-autosuggestions;
 in
   inputs.wrapper-modules.wrappers.zsh.wrap (
     {config, ...}: {
@@ -20,7 +20,7 @@ in
       };
 
       config = {
-        pkgs = pkgs-unstable;
+        inherit pkgs;
         zshrc.content = ''
           # === Dependencies ===
           alias git='${getExe git}'

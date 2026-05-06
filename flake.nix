@@ -3,12 +3,11 @@
 
   inputs = {
     # Package Repositories
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
     mangowm = {
       url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # System Dependencies
@@ -24,8 +23,8 @@
     };
   };
 
-  outputs = {self, ...} @ inputs: let
-    lib = inputs.nixpkgs-stable.lib;
+  outputs = {nixpkgs, self, ...} @ inputs: let
+    inherit (nixpkgs) lib;
 
     # Each system that this configuration's packages & other system-dependant outputs support.
     systems = [
@@ -43,8 +42,7 @@
       args
       // {
         inherit system;
-        pkgs-stable = inputs.nixpkgs-stable.legacyPackages.${system};
-        pkgs-unstable = inputs.nixpkgs-unstable.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${system};
         pkgs-self = self.packages.${system};
       };
 
@@ -59,6 +57,6 @@
         import ./packages (getArgsFor system)
     );
 
-    formatter = forEachSystem (system: inputs.nixpkgs-stable.legacyPackages.${system}.alejandra);
+    formatter = forEachSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
 }

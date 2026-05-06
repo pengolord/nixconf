@@ -1,7 +1,6 @@
 {
   inputs,
-  lib,
-  pkgs-unstable,
+  pkgs,
   system,
   ...
 } @ args:
@@ -10,7 +9,7 @@ inputs.wrapper-modules.wrappers.mangowc.wrap {
     (import ./cursor.nix args)
   ];
 
-  pkgs = pkgs-unstable;
+  pkgs = pkgs;
   package = inputs.mangowm.packages.${system}.default;
 
   settings = import ./settings.nix args;

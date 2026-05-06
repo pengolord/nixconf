@@ -2,18 +2,18 @@
   inputs,
   lib,
   pkgs-self,
-  pkgs-unstable,
+  pkgs,
   ...
 }: let
   wrapper = inputs.wrapper-modules.lib.evalModule ./wrapper.nix;
 
   inherit (lib) getExe;
 
-  inherit (pkgs-unstable) kitty;
+  inherit (pkgs) kitty;
   zsh = pkgs-self.zsh.wrap {
     zshrc-sources = [
       (
-        pkgs-unstable.writeText "kitty.zsh" ''
+        pkgs.writeText "kitty.zsh" ''
           # === Kitty Terminal Compat ===
           alias ssh='${kitty}/bin/kitten ssh'
         ''
@@ -22,7 +22,7 @@
   };
 in
   wrapper.config.wrap {
-    pkgs = pkgs-unstable;
+    inherit pkgs;
 
     configFile.content = ''
       background_opacity         0.7

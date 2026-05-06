@@ -1,10 +1,10 @@
 {
   inputs,
-  pkgs-unstable,
+  pkgs,
   ...
 }:
 inputs.wrapper-modules.wrappers.git.wrap {
-  pkgs = pkgs-unstable;
+  inherit pkgs;
 
   settings = {
     user.name = "pengo";

@@ -1,13 +1,13 @@
 {
   inputs,
   lib,
-  pkgs-unstable,
+  pkgs,
   system,
   ...
 }:
 inputs.wrapper-modules.wrappers.noctalia-shell.wrap (
   {config, ...}: {
-    pkgs = pkgs-unstable;
+    inherit pkgs;
     package = inputs.noctalia-shell.packages.${system}.default;
 
     outOfStoreConfig = "/home/pengo/.config/noctalia";
