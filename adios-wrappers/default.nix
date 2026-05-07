@@ -2,6 +2,8 @@
   inputs,
   lib,
   pkgs,
+  self,
+  system,
   ...
 }: let
   inherit (inputs.adios) adios;
@@ -18,9 +20,12 @@
   tree = adios root {
     options = {
       "/nixpkgs" = {
-        inherit pkgs;
+        inherit lib pkgs;
+      };
+      "/self" = {
+        pkgs = self.packages.${system};
       };
     };
   };
 in
-  filterAttrs (key: _: pathExists ./${key}/default.nix) (mapAttrs (_: module: module {}) tree.modules)
+  filterAttrs (package: _: pathExists ./${package}/default.nix) (mapAttrs (_: module: module {}) tree.modules)
