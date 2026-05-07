@@ -1,5 +1,38 @@
 {
   "nodes": {
+    "adios": {
+      "locked": {
+        "lastModified": 1777209826,
+        "narHash": "sha256-+PPw/Ex7IuvMYydO8Z0VPz2tG4JOQEp2+HiHKrzYQ+4=",
+        "owner": "llakala",
+        "repo": "adios",
+        "rev": "8dd3b5db888fc9bf50101708ad3ad85e2d4a0665",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "adios",
+        "type": "github"
+      }
+    },
+    "adios-wrappers": {
+      "inputs": {
+        "adios": "adios"
+      },
+      "locked": {
+        "lastModified": 1777676164,
+        "narHash": "sha256-bnq6m3xb0FaWrJ3E7ThT4KWXnTaooy2ItLiRVPxPSTo=",
+        "owner": "llakala",
+        "repo": "adios-wrappers",
+        "rev": "163c95984ab840a60dcef0bfdf64ece90ffc4b70",
+        "type": "github"
+      },
+      "original": {
+        "owner": "llakala",
+        "repo": "adios-wrappers",
+        "type": "github"
+      }
+    },
     "agenix": {
       "inputs": {
         "darwin": [],
@@ -290,6 +323,11 @@
     },
     "root": {
       "inputs": {
+        "adios": [
+          "adios-wrappers",
+          "adios"
+        ],
+        "adios-wrappers": "adios-wrappers",
         "agenix": "agenix",
         "apple-silicon": "apple-silicon",
         "impermanence": "impermanence",

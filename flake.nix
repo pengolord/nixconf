@@ -21,9 +21,15 @@
       inputs.home-manager.follows = "";
       inputs.darwin.follows = "";
     };
+    adios.follows = "adios-wrappers/adios";
+    adios-wrappers.url = "github:llakala/adios-wrappers";
   };
 
-  outputs = {nixpkgs, self, ...} @ inputs: let
+  outputs = {
+    nixpkgs,
+    self,
+    ...
+  } @ inputs: let
     inherit (nixpkgs) lib;
 
     # Each system that this configuration's packages & other system-dependant outputs support.
@@ -54,7 +60,12 @@
 
     packages = forEachSystem (
       system:
-        import ./packages (getArgsFor system)
+        self.wrappers.${system} // import ./packages (getArgsFor system)
+    );
+
+    wrappers = forEachSystem (
+      system:
+        import ./adios-wrappers (getArgsFor system)
     );
 
     formatter = forEachSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
