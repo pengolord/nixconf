@@ -1,11 +1,13 @@
 _: {
   inputs.self.path = "/self";
 
+  mutations."/zsh".zshrcFiles = _: [
+    ./config/aliases.zsh
+    ./config/prompt.zsh
+  ];
+
   options = {
-    zshrcFiles.default = [
-      ./config/aliases.zsh
-      ./config/prompt.zsh
-    ];
+    zshrcFiles.mutators = ["/kitty" "/zsh"];
 
     extraZshrc.default = ''
       export EDITOR=nvim
