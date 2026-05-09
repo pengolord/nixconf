@@ -141,6 +141,8 @@ in {
     "name:^eDP-1$, width:2560, height:1600, refresh:60, scale:2"
   ];
 
+  switchbind = "fold, spawn, ${getExe noctalia} ipc call lockScreen lock";
+
   # === Blur & Shadows ===
   blur = 1;
   shadows = 0;
