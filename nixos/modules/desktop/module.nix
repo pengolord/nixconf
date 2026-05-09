@@ -32,7 +32,7 @@ in {
     ];
 
     programs.mango.enable = mkDefault true;
-    programs.mango.package = mkDefault pkgs-self.mango;
+    programs.mango.package = mkDefault pkgs-self.mangowc;
 
     services.desktopManager.gnome.enable = mkDefault true;
   };

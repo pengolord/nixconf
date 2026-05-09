@@ -1,14 +1,13 @@
 {
-  lib,
-  pkgs,
-  pkgs-self,
+  nixpkgs,
+  self,
   ...
 }: let
-  inherit (lib) getExe;
+  inherit (nixpkgs.lib) getExe;
   inherit (builtins) concatLists genList;
 
-  inherit (pkgs) grim wl-clipboard;
-  inherit (pkgs-self) kitty noctalia;
+  inherit (nixpkgs.pkgs) bibata-cursors grim wl-clipboard;
+  inherit (self.pkgs) kitty noctalia;
 
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {
@@ -193,6 +192,10 @@ in {
   drag_tile_to_tile = 1;
   source_optional = "~/.cache/matugen/mango.conf";
 
+  # === Cursor ===
+  cursor_theme = "Bibata-Modern-Ice";
+  cursor_size = 24;
+
   # === Environment ===
   env = let
     home = "/home/pengo";
@@ -207,5 +210,8 @@ in {
     "XDG_PICTURES_DIR,${home}/Pictures"
     "XDG_VIDEOS_DIR,${home}/Videos"
     "GRIM_DEFAULT_DIR,${home}/Pictures/Screenshots"
+    "XCURSOR_PATH,${bibata-cursors}/share/icons"
+    "XCURSOR_THEME,Bibata-Modern-Ice"
+    "XCURSOR_SIZE,24"
   ];
 }
