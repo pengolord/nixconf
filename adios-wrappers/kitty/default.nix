@@ -10,18 +10,20 @@ _: {
     '')
   ];
 
-  options.configFile.defaultFunc = {inputs}: let
-    inherit (inputs.nixpkgs.lib) getExe;
-    inherit (inputs.nixpkgs.pkgs) writeText;
-    inherit (inputs.self.pkgs) zsh;
-  in
-    writeText "kitty.conf" ''
-      background_opacity         0.7
-      dynamic_background_opacity yes
-      shell                      ${getExe zsh}
+  options = {
+    configFile.defaultFunc = {inputs}: let
+      inherit (inputs.nixpkgs.lib) getExe;
+      inherit (inputs.nixpkgs.pkgs) writeText;
+      inherit (inputs.self.pkgs) zsh;
+    in
+      writeText "kitty.conf" ''
+        background_opacity         0.7
+        dynamic_background_opacity yes
+        shell                      ${getExe zsh}
 
-      include ~/.cache/matugen/kitty.conf
-    '';
+        include ~/.cache/matugen/kitty.conf
+      '';
 
-  options.theme.default = "";
+    theme.default = "";
+  };
 }
