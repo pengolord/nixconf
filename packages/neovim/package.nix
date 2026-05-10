@@ -46,4 +46,12 @@ inputs.mnw.lib.wrap pkgs {
       ))
     ];
   };
+
+  extraBinPath = with pkgs; [
+    lua-language-server
+    nixd
+    rust-analyzer
+    typescript-language-server
+    java-language-server
+  ];
 }
