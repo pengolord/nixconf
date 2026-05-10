@@ -108,7 +108,7 @@ in {
   # === Layouts ===
   tagrule = concatLists [
     # Set all layouts to use tgmix by default
-    (forTag1to9 (tag: "id:${tag}, layout_name:tgmix"))
+    (forTag1to9 (tag: "id:${tag}, layout_name:dwindle"))
   ];
 
   # Overview 'Layout'
