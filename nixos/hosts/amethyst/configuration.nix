@@ -40,10 +40,8 @@
   programs.virt-manager.enable = true;
   users.groups.libvirtd.members = ["pengo"];
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.swtpm.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-  environment.systemPackages = with pkgs; [
-    swtpm
-  ];
 
   programs.steam.enable = true;
 
