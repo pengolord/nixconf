@@ -13,7 +13,7 @@ inputs.wrapper-modules.wrappers.noctalia-shell.wrap (
     outOfStoreConfig = "/home/pengo/.config/noctalia";
 
     constructFiles.user-templates = lib.mkForce {
-      content = import ../matugen/templates;
+      content = import ../../adios-wrappers/matugen/templates;
       relPath = "${config.generatedConfigDirname}/user-templates.toml";
     };
   }
