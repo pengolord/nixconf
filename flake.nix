@@ -61,13 +61,9 @@
 
     packages = forEachSystem (
       system:
-        self.wrappers.${system} // import ./packages (getArgsFor system)
+        import ./packages (getArgsFor system)
     );
 
-    wrappers = forEachSystem (
-      system:
-        import ./adios-wrappers (getArgsFor system)
-    );
 
     formatter = forEachSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
