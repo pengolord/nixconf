@@ -23,6 +23,7 @@
     };
     adios.follows = "adios-wrappers/adios";
     adios-wrappers.url = "github:llakala/adios-wrappers";
+    mnw.url = "github:Gerg-L/mnw";
   };
 
   outputs = {
