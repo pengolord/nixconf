@@ -13,6 +13,7 @@
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-self = self.packages.${system};
 
+  inherit (pkgs) eza;
   inherit (pkgs-self) git neovim zsh;
 in {
   options.userModules.pengo.shell = {
@@ -31,7 +32,7 @@ in {
 
     users.users.pengo = {
       shell = getExe zsh;
-      packages = [git neovim zsh];
+      packages = [eza git neovim zsh];
     };
   };
 }
