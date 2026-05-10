@@ -22,7 +22,8 @@
       "/nixpkgs" = {
         inherit lib pkgs;
       };
-      "/self" = {
+      "/flake" = {
+        inherit inputs system;
         pkgs = self.packages.${system};
       };
     };

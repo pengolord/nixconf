@@ -1,5 +1,8 @@
 _: {
-  inputs.self.path = "/self";
+  inputs = {
+    flake.path = "/flake";
+    git.path = "/git";
+  };
 
   mutations."/zsh".zshrcFiles = _: [
     ./config/aliases.zsh
@@ -19,11 +22,10 @@ _: {
         zsh-syntax-highlighting
       ];
 
-    extraPackages.defaultFunc = {inputs}:
-      with inputs.nixpkgs.pkgs // inputs.self.pkgs; [
-        eza
-        git
-        neovim
-      ];
+    extraPackages.defaultFunc = {inputs}: [
+      (inputs.git {})
+      inputs.flake.pkgs.neovim
+      inputs.nixpkgs.pkgs.eza
+    ];
   };
 }

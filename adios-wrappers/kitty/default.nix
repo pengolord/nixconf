@@ -1,5 +1,5 @@
 _: {
-  inputs.self.path = "/self";
+  inputs.zsh.path = "/zsh";
 
   mutations."/zsh".zshrcFiles = {inputs}: let
     inherit (inputs.nixpkgs.pkgs) kitty writeText;
@@ -14,7 +14,7 @@ _: {
     configFile.defaultFunc = {inputs}: let
       inherit (inputs.nixpkgs.lib) getExe;
       inherit (inputs.nixpkgs.pkgs) writeText;
-      inherit (inputs.self.pkgs) zsh;
+      zsh = inputs.zsh {};
     in
       writeText "kitty.conf" ''
         background_opacity         0.7

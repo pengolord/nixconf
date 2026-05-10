@@ -1,13 +1,13 @@
 {
+  flake,
   nixpkgs,
-  self,
   ...
 }: let
   inherit (nixpkgs.lib) getExe;
   inherit (builtins) concatLists genList;
 
   inherit (nixpkgs.pkgs) bibata-cursors grim wl-clipboard;
-  inherit (self.pkgs) kitty noctalia;
+  inherit (flake.pkgs) kitty noctalia;
 
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {
