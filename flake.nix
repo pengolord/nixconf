@@ -64,6 +64,16 @@
         import ./packages (getArgsFor system)
     );
 
+    devShells = forEachSystem (
+      system: let
+        pkgs = inputs.nixpkgs.legacyPackages.${system};
+      in {
+        default = pkgs.mkShellNoCC {
+          allowSubstitutes = false;
+          packages = builtins.attrValues self.packages.${system};
+        };
+      }
+    );
 
     formatter = forEachSystem (system: nixpkgs.legacyPackages.${system}.alejandra);
   };
