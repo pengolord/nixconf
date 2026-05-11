@@ -5,6 +5,6 @@ return {
   'neo-tree.nvim',
   lazy = false,
   after = function()
-    require('neo-tree').setup()
+    require('neo-tree').setup({})
   end
 }
