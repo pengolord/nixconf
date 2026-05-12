@@ -6,8 +6,9 @@
   inherit (nixpkgs.lib) getExe;
   inherit (builtins) concatLists genList;
 
+  noctalia = flake.inputs.noctalia-shell.packages.${flake.system}.default;
   inherit (nixpkgs.pkgs) bibata-cursors grim wl-clipboard;
-  inherit (flake.pkgs) kitty noctalia;
+  inherit (flake.pkgs) kitty;
 
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {
@@ -56,14 +57,14 @@ in {
     [
       # Keybinded Programs
       "super, return, spawn, ${getExe kitty}"
-      "super, space, spawn, ${getExe noctalia} ipc call launcher toggle"
+      "super, space, spawn, ${getExe noctalia} msg panel-toggle launcher"
 
       # Media keys
-      "none, XF86AudioRaiseVolume, spawn, ${getExe noctalia} ipc call volume increase"
-      "none, XF86AudioLowerVolume, spawn, ${getExe noctalia} ipc call volume decrease"
-      "none, XF86AudioMute, spawn, ${getExe noctalia} ipc call volume muteOutput"
-      "none, XF86MonBrightnessUp, spawn, ${getExe noctalia} ipc call brightness increase"
-      "none, XF86MonBrightnessDown, spawn, ${getExe noctalia} ipc call brightness decrease"
+      "none, XF86AudioRaiseVolume, spawn, ${getExe noctalia} msg volume-up"
+      "none, XF86AudioLowerVolume, spawn, ${getExe noctalia} msg volume-down"
+      "none, XF86AudioMute, spawn, ${getExe noctalia} msg volume-mute"
+      "none, XF86MonBrightnessUp, spawn, ${getExe noctalia} msg brightness-up"
+      "none, XF86MonBrightnessDown, spawn, ${getExe noctalia} msg brightness-down"
 
       # Screenshots
       "super, s, spawn_shell, ${getExe grim} - | tee $GRIM_DEFAULT_DIR/$(date +%y-%m-%d-%H:%M:%S).png | ${wl-clipboard}/bin/wl-copy"
@@ -141,7 +142,7 @@ in {
     "name:^eDP-1$, width:2560, height:1600, refresh:60, scale:2"
   ];
 
-  switchbind = "fold, spawn, ${getExe noctalia} ipc call lockScreen lock";
+  switchbind = "fold, spawn, ${getExe noctalia} msg screen-lock";
 
   # === Blur & Shadows ===
   blur = 1;

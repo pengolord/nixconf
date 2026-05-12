@@ -4,7 +4,7 @@
   inputs = {
     # Package Repositories
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell";
+    noctalia-shell.url = "github:noctalia-dev/noctalia-shell/v5";
     mangowm = {
       url = "github:mangowm/mango";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -15,7 +15,6 @@
     impermanence.url = "github:nix-community/impermanence";
 
     # Helpers
-    wrapper-modules.url = "github:Pengolord/nix-wrapper-modules";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.home-manager.follows = "";
