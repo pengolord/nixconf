@@ -13,26 +13,23 @@
   system = pkgs.stdenv.hostPlatform.system;
   pkgs-self = self.packages.${system};
 
-  inherit (pkgs) eza;
-  inherit (pkgs-self) git neovim zsh;
+  inherit (pkgs-self) git neovim nushell;
 in {
   options.userModules.pengo.shell = {
     enable = mkOption {
       type = types.bool;
       default = true;
-      description = "Sets up zsh & sets my shell to pengo's wrapped version of it.";
+      description = "Sets up nushell & sets my shell to my wrapped version of it.";
     };
   };
 
   config = mkIf cfg.enable {
     programs.nano.enable = mkDefault false;
-    programs.zsh.enable = mkDefault true;
     programs.direnv.enable = mkDefault true;
-    environment.pathsToLink = ["/share/zsh"];
 
     users.users.pengo = {
-      shell = getExe zsh;
-      packages = [eza git neovim zsh];
+      shell = getExe nushell;
+      packages = [git neovim nushell];
     };
   };
 }
