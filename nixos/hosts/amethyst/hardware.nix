@@ -33,13 +33,7 @@
     "/nix" = {
       device = "/dev/mapper/crypted";
       fsType = "btrfs";
-      options = ["subvol=@nix" "compress=zstd:5"];
-    };
-
-    "/var" = {
-      device = "/dev/mapper/crypted";
-      fsType = "btrfs";
-      options = ["subvol=@var" "compress=zstd:1"];
+      options = ["subvol=@nix" "compress-force=zstd:5"];
     };
 
     "/home" = {
