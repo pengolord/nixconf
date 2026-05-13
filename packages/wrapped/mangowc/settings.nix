@@ -1,14 +1,10 @@
-{
-  flake,
-  nixpkgs,
-  ...
-}: let
+{nixpkgs, ...} @ inputs: let
   inherit (nixpkgs.lib) getExe;
   inherit (builtins) concatLists genList;
 
-  noctalia = flake.inputs.noctalia-shell.packages.${flake.system}.default;
+  kitty = inputs.kitty {};
+  noctalia = inputs.noctalia-shell {};
   inherit (nixpkgs.pkgs) bibata-cursors grim wl-clipboard;
-  inherit (flake.pkgs) kitty;
 
   forTag1to9 = f: genList (i: f (toString (i + 1))) 9;
 in {

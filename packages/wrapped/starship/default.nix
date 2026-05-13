@@ -10,14 +10,11 @@ _: {
       + "$directory"
       + "$git_branch"
       + "$git_state"
-
       + "$fill"
-
       + "$cmd_duration"
       + "$nix_shell"
       + "$line_break"
-      + "$character"
-      ;
+      + "$character";
 
     username = {
       show_always = true;

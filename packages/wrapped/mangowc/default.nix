@@ -1,5 +1,7 @@
 _: {
   inputs.flake.path = "/flake";
+  inputs.kitty.path = "/kitty";
+  inputs.noctalia-shell.path = "/noctalia-shell";
 
   options = {
     configFile.defaultFunc = {inputs}: let
