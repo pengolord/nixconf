@@ -194,6 +194,7 @@ in {
   snap_distance = 30;
   drag_tile_to_tile = 1;
   source_optional = "~/.cache/matugen/mango.conf";
+  enable_syncobj = 1;
 
   # === Cursor ===
   cursor_theme = "Bibata-Modern-Ice";
