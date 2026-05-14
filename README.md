@@ -5,17 +5,24 @@ This flake contains all of my nix related configurations. I organize my config i
 The reasons why I do and don't use some tools.
 
 ### [Synaptic Standard](https://github.com/llakala/synaptic-standard)
-The structure of this flake is heavily inspired by the synaptic standard. I don't follow it exactly, but loosely following it has made my config much more maintanable. The biggest alternative to synaptic, the [dedritic pattern](https://github.com/mightyiam/dendritic), sacrifices a lot of this maintanability (too much in my opinion) in order to make more modular and portable configurations. You should check it out too if that sounds worth it to you.
+The synaptic standard is a good (albeit incomplete) guide on how to make your config more structured. I like a lot of it. However, automatic imports require so much boilerplate that I decided to just manually specify paths for now. I'll definitely change this in the future.
 
-### [Wrapper Modules](https://github.com/BirdeeHub/nix-wrapper-modules)
-There are a lot of options for configuring programs on nix. For starters, you can just configure them like you would on most other distros by just placing the config files in the right location.
-But, I constantly switch between mutliple computers, so I would have to pull in dotfiles all the time, and because I already pull in my nix config, it makes more sense for me to pull in my dotfiles along with it.
-Nix Wrapper Modules is a tool that makes it easy to 'wrap' a program. Wrapping a program lets you bundle the configuration with the program by setting flags & environment variables, among other things. It also comes with a few pre-built modules which make it easy to configure the programs the modules are built for.
+### Package Wrappers
+There are lots of ways to configure programs on nix. Here are the main ones:
+#### Placing Dotfiles Manually
+This is the method I would recommend for most normal users. You just place the configuration where it goes, just like on any other distro.
+#### Home-manager
+Home manager lets you configure stuff by symlinking their normal config locations to the nix store and providing other configurations such as environment variables, systemd services, etc. It's a very large dependency and does too much IMO.
+#### Hjem
+Hjem is a *super* simple helper that just symlinks stuff and nothing else. Great if you want to configure stuff declaratively and simply.
+#### Wrapers
+This is what I went with. Wrappers let you bundle the configuration with the program itself, meaning, instead of running neovim, you run neovim with an environment variable set that moves its configuration directory to the nix store. This is super nice and prevents cluttering your home directory. I use [mnw](https://github.com/Gerg-L/mnw/) and [adios-wrappers](https://github.com/llakala/adios-wrappers) to simplify the process, but you can use other frameworks or the built-in `symlinkJoin.`
 
 ## Systems
 
 ### Amethyst
 This is my main workstation. I do most of my programming, gaming, etc. on here. It has mostly standard desktop stuff & a vm for running FL Studio.
+Impermanent squad 💪
 
 ### Granite
 This is my homelab. Right now it runs a lot of docker stuff 'cause I haven't gotten to changing that yet. Not sure what I'll switch to currently.
