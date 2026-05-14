@@ -7,6 +7,7 @@ in {
   desktop = pinModule ./desktop;
   nix-settings = pinModule ./nix-settings;
   secrets = pinModule ./secrets;
+  shared = import ./shared.nix;
   shell = pinModule ./shell;
   user = pinModule ./user;
 }

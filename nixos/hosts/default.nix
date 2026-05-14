@@ -3,24 +3,18 @@
   self,
   ...
 } @ args: let
-  inherit (lib) genAttrs nixosSystem;
-  inherit (builtins) attrNames filter pathExists readDir;
-  contentsOf = dir: attrNames (readDir dir);
+  inherit (lib) nixosSystem;
 
-  # Gets the name of every sibling directory that has a 'configuration.nix' file.
-  hasConfigFile = path: pathExists ./${path}/configuration.nix;
-  hostnames = filter hasConfigFile (contentsOf ./.);
-
-  mkConfig = hostname:
+  mkHost = path:
     nixosSystem {
       modules = [
-        self.nixosModules.nix-settings
-        ./${hostname}/configuration.nix
+        self.nixosModules.shared
+        path
       ];
-
       specialArgs = args;
     };
-
-  nixosConfigurations = genAttrs hostnames mkConfig;
-in
-  nixosConfigurations
+in {
+  amethyst = mkHost ./amethyst/configuration.nix;
+  granite = mkHost ./granite/configuration.nix;
+  quartz = mkHost ./quartz/configuration.nix;
+}
