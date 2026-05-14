@@ -1,11 +1,32 @@
 {types, ...}: {
-  inputs.nixpkgs.path = "/nixpkgs";
-  inputs.mkWrapper.path = "/mkWrapper";
+  inputs = {
+    nixpkgs.path = "/nixpkgs";
+    mkWrapper.path = "/mkWrapper";
+  };
 
   options = {
     settings = {
-      type = types.string;
+      type = types.attrs;
+      description = ''
+        Settings to be injected into the wrapped package's `config.toml`.
+
+        See the matugen docs for valid options:
+        https://iniox.github.io/#matugen/configuration
+
+        Disjoint with the `configFile` option.
+      '';
       default = import ./templates;
+    };
+    configFile = {
+      type = types.pathLike;
+      description = ''
+        `config.toml` file to be injected into the wrapped package.
+
+        See the matugen docs for valid options:
+        https://iniox.github.io/#matugen/configuration
+
+        Disjoint with the `settings` option.
+      '';
     };
     package = {
       type = types.derivation;
@@ -18,14 +39,14 @@
     options,
     inputs,
   }: let
-    generator = inputs.nixpkgs.pkgs.writeText "";
+    generator = inputs.nixpkgs.pkgs.formats.toml {};
   in
     inputs.mkWrapper {
       inherit (options) package;
       preSymlink = ''
         mkdir -p $out/matugen
       '';
-      symlinks."$out/matugen/config.toml" = generator options.settings;
+      symlinks."$out/matugen/config.toml" = generator.generate "config.toml" options.settings;
       flags = ["-c" "$out/matugen/config.toml"];
     };
 }

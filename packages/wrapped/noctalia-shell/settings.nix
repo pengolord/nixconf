@@ -50,7 +50,7 @@
       enable_community_templates = true;
       community_ids = ["discord"];
       enable_user_templates = true;
-      user_config = nixpkgs.pkgs.writeText "templates.toml" (import ../matugen/templates);
+      user_config = (nixpkgs.pkgs.formats.toml {}).generate "templates.toml" (import ../matugen/templates);
     };
   };
 }

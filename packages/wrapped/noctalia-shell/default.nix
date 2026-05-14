@@ -6,7 +6,26 @@
   options = {
     settings = {
       type = types.attrs;
+      description = ''
+        Settings to be injected into the wrapped package's `config.toml`.
+
+        See the noctalia docs for valid options:
+        https://docs.noctalia.dev/v5
+
+        Disjoint with the `configFile` option.
+      '';
       defaultFunc = {inputs}: import ./settings.nix inputs;
+    };
+    configFile = {
+      type = types.pathLike;
+      description = ''
+        `config.toml` file to be injected into the wrapped package.
+
+        See the noctalia docs for valid options:
+        https://docs.noctalia.dev/v5
+
+        Disjoint with the `settings` option.
+      '';
     };
     package = {
       type = types.derivation;
