@@ -12,5 +12,7 @@ _: {
     $env.config.show_banner = false
     $env.config.shell_integration.osc8 = true
     $env.EDITOR = '${inputs.flake.pkgs.neovim}'
+
+    ${import ./direnv.nix inputs.nixpkgs}
   '';
 }
