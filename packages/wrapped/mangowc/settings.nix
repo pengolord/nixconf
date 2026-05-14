@@ -142,6 +142,10 @@ in {
 
   # === Blur & Shadows ===
   blur = 1;
+  blur_params = {
+    radius = 6;
+    num.passes = 2;
+  };
   shadows = 0;
 
   # === Window Visuals ===
@@ -190,7 +194,7 @@ in {
   snap_distance = 30;
   drag_tile_to_tile = 1;
   source_optional = "~/.cache/matugen/mango.conf";
-  enable_syncobj = 1;
+  syncobj_enable = 1;
 
   # === Cursor ===
   cursor_theme = "Bibata-Modern-Ice";
