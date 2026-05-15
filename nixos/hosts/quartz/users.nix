@@ -1,4 +1,4 @@
-{self, ...}: {
+{
   userModules.pengo = {
     enable = true;
     isAdministrator = true;

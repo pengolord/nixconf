@@ -15,7 +15,7 @@ in {
       prismlauncher
       vesktop
       vscodium
-      moduleArgs.pkgs.obsidian # allows for unfree to work
+      moduleArgs.pkgs.obsidian # allows for unfree to work, but does not pin the package
     ];
 
     programs.mango.enable = mkDefault true;
