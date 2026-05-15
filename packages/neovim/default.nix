@@ -28,6 +28,7 @@ inputs.mnw.lib.wrap pkgs {
       indent-blankline-nvim
       base16-nvim
       smart-splits-nvim
+      guess-indent-nvim
 
       # Completion
       blink-cmp
