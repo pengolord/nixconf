@@ -14,7 +14,7 @@
 
         Disjoint with the `configFile` option.
       '';
-      defaultFunc = {inputs}: import ./settings.nix inputs;
+      default = import ./settings.nix;
     };
     configFile = {
       type = types.pathLike;

@@ -1,4 +1,4 @@
-{nixpkgs, ...}: {
+{
   bar.default = {
     position = "left";
     margin_edge = 8;
@@ -50,7 +50,7 @@
       enable_community_templates = true;
       community_ids = ["discord"];
       enable_user_templates = true;
-      user_config = (nixpkgs.pkgs.formats.toml {}).generate "templates.toml" (import ../matugen/templates);
+      user = (import ../matugen/templates).templates;
     };
   };
 }
