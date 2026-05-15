@@ -8,7 +8,7 @@
   mkHost = path:
     nixosSystem {
       modules = [
-        self.nixosModules.shared
+        self.nixosModules.default
         path
       ];
       specialArgs = args;

@@ -1,26 +1,13 @@
-{
-  inputs,
-  lib,
-  self,
-  ...
-}: {
-  config,
-  pkgs,
-  ...
-}: let
+{config, lib, pkgs, ...} @ moduleArgs: let
+  cfg = config.userModules.pengo;
+  inherit (cfg._args) pkgs-self pkgs;
   inherit (lib) mkDefault mkEnableOption mkIf;
-
-  cfg = config.userModules.pengo.desktop;
-  system = pkgs.stdenv.hostPlatform.system;
-  pkgs-self = self.packages.${system};
 in {
-  imports = [inputs.mangowm.nixosModules.mango];
-
   options.userModules.pengo.desktop = {
     enable = mkEnableOption "Enables my desktop environment & apps; currently using mangowm.";
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf cfg.desktop.enable {
     users.users.pengo.packages = with pkgs // pkgs-self; [
       godot
       librewolf
@@ -28,7 +15,7 @@ in {
       prismlauncher
       vesktop
       vscodium
-      obsidian
+      moduleArgs.pkgs.obsidian # allows for unfree to work
     ];
 
     programs.mango.enable = mkDefault true;

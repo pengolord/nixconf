@@ -1,18 +1,7 @@
-{
-  lib,
-  self,
-  ...
-}: {
-  config,
-  pkgs,
-  ...
-}: let
+{config, lib, ...}: let
+  cfg = config.userModules.pengo;
+  inherit (cfg._args) pkgs-self;
   inherit (lib) getExe mkDefault mkIf mkOption types;
-
-  cfg = config.userModules.pengo.shell;
-  system = pkgs.stdenv.hostPlatform.system;
-  pkgs-self = self.packages.${system};
-
   inherit (pkgs-self) git neovim nushell;
 in {
   options.userModules.pengo.shell = {
@@ -23,7 +12,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = mkIf cfg.shell.enable {
     programs.nano.enable = mkDefault false;
     programs.direnv.enable = mkDefault true;
 

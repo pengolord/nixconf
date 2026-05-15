@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [self.nixosModules.user];
-
   programs.fish.enable = true;
 
   userModules.pengo = {

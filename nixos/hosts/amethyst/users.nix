@@ -1,10 +1,7 @@
 {
-  self,
   config,
   ...
 }: {
-  imports = [self.nixosModules.user];
-
   userModules.pengo = {
     enable = true;
     isAdministrator = true;

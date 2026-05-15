@@ -1,15 +1,7 @@
-{
-  inputs,
-  lib,
-  ...
-}: {
-  config,
-  pkgs,
-  ...
-}: let
+{config, lib, ...}: let
+  cfg = config.userModules.pengo;
+  inherit (cfg._args) pkgs;
   inherit (lib) getName mkEnableOption mkIf;
-
-  cfg = config.nix;
 in {
   options.nix.apple-silicon.enable = mkEnableOption "Enables the apple-silicon chachix repo.";
 
@@ -18,11 +10,11 @@ in {
     nix.settings = {
       experimental-features = ["nix-command" "flakes"];
 
-      extra-substituters = mkIf cfg.apple-silicon.enable [
+      extra-substituters = mkIf config.nix.apple-silicon.enable [
         "https://nixos-apple-silicon.cachix.org"
       ];
 
-      extra-trusted-public-keys = mkIf cfg.apple-silicon.enable [
+      extra-trusted-public-keys = mkIf config.nix.apple-silicon.enable [
         "nixos-apple-silicon.cachix.org-1:8psDu5SA5dAD7qA0zMy5UT292TxeEPzIz8VVEr2Js20="
       ];
     };
