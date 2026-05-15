@@ -9,11 +9,8 @@
     imports = [
       inputs.mangowm.nixosModules.mango
       inputs.agenix.nixosModules.default
-      ./desktop
-      ./nix-settings
-      ./secrets
-      ./shell
       ./user
+      ./system/nix-settings
     ];
 
     options.userModules.pengo._args = lib.mkOption {
@@ -43,9 +40,5 @@
     };
   };
 
-  desktop = import ./desktop;
-  nix-settings = import ./nix-settings;
-  secrets = import ./secrets;
-  shell = import ./shell;
   user = import ./user;
 }

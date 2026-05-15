@@ -2,6 +2,12 @@
   cfg = config.userModules.pengo;
   inherit (lib) mkEnableOption mkIf;
 in {
+  imports = [
+    ./desktop
+    ./secrets
+    ./shell
+  ];
+
   options.userModules.pengo = {
     enable = mkEnableOption "Adds my user (pengo) as a user.";
     isAdministrator = mkEnableOption "Adds my user to the 'wheel' group, among other privileges.";
