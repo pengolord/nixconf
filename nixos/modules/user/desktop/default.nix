@@ -7,7 +7,7 @@ in {
     enable = mkEnableOption "Enables my desktop environment & apps; currently using mangowm.";
   };
 
-  config = mkIf cfg.desktop.enable {
+  config = mkIf (cfg.enable && cfg.desktop.enable) {
     users.users.pengo.packages = with pkgs // pkgs-self; [
       godot
       librewolf
