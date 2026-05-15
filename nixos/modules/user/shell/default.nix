@@ -21,6 +21,7 @@ in {
         comma
         git
         neovim
+        nh
         nushell
       ];
     };
