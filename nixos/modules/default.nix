@@ -40,6 +40,4 @@
         };
     };
   };
-
-  user = import ./user;
 }

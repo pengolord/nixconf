@@ -1,8 +1,13 @@
-{config, lib, pkgs, ...} @ moduleArgs: let
+{config, lib, ...} @ moduleArgs: let
   cfg = config.userModules.pengo;
   inherit (cfg._args) pkgs-self pkgs;
+  pkgs-unpinned = moduleArgs.pkgs;
   inherit (lib) mkDefault mkEnableOption mkIf;
 in {
+  imports = [
+    ./gaming.nix
+  ];
+
   options.userModules.pengo.desktop = {
     enable = mkEnableOption "Enables my desktop environment & apps; currently using mangowm.";
   };
@@ -12,10 +17,8 @@ in {
       godot
       librewolf
       matugen
-      prismlauncher
       vesktop
-      vscodium
-      moduleArgs.pkgs.obsidian # allows for unfree to work, but does not pin the package
+      pkgs-unpinned.obsidian # allows for unfree to work, but does not pin the package
     ];
 
     programs.mango.enable = mkDefault true;

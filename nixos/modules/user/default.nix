@@ -1,9 +1,9 @@
-{config, lib, ...}: let
+{config, lib, pkgs, ...}: let
   cfg = config.userModules.pengo;
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./desktop.nix
+    ./desktop
     ./secrets.nix
     ./shell.nix
   ];

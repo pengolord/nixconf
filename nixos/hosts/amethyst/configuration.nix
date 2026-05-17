@@ -43,8 +43,6 @@
   virtualisation.libvirtd.qemu.swtpm.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
 
-  programs.steam.enable = true;
-
   networking = {
     hostName = "amethyst";
     networkmanager.enable = true;
