@@ -1,4 +1,8 @@
-{config, lib, ...} @ moduleArgs: let
+{
+  config,
+  lib,
+  ...
+} @ moduleArgs: let
   cfg = config.userModules.pengo;
   inherit (cfg._args) pkgs-self pkgs;
   pkgs-unpinned = moduleArgs.pkgs;

@@ -1,4 +1,8 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.userModules.pengo;
   inherit (cfg._args) pkgs-self pkgs;
   inherit (lib) mkDefault mkEnableOption mkIf;

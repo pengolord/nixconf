@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     inputs.apple-silicon.nixosModules.apple-silicon-support
     ./users.nix
@@ -11,30 +7,12 @@
 
   nix.apple-silicon.enable = true;
 
-  boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = false;
-    };
-
-    plymouth = {
-      enable = true;
-      theme = "cuts";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = ["cuts"];
-        })
-      ];
-    };
-
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "udev.log_level=3"
-      "systemd.show_status=auto"
-    ];
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = false;
   };
+
+  boot.plymouthWithCuts.enable = true;
 
   programs.steam.enable = false;
 

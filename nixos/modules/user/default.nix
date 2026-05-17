@@ -1,4 +1,9 @@
-{config, lib, pkgs, ...}: let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.userModules.pengo;
   inherit (lib) mkEnableOption mkIf;
 in {

@@ -1,9 +1,13 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.userModules.pengo;
   inherit (cfg._args) pkgs;
   inherit (lib) getName mkEnableOption mkIf;
 in {
-  options.nix.apple-silicon.enable = mkEnableOption "Enables the apple-silicon chachix repo.";
+  options.nix.apple-silicon.enable = mkEnableOption "Enables the apple-silicon cachix repo.";
 
   config = {
     nix.package = pkgs.lixPackageSets.stable.lix;

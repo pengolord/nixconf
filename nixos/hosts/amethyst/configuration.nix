@@ -1,37 +1,19 @@
-{pkgs, ...}: {
+{
   imports = [
     ./hardware.nix
     ./impermanence.nix
     ./users.nix
   ];
 
-  boot = {
-    loader = {
-      limine.enable = true;
-      limine.efiSupport = true;
+  boot.loader = {
+    limine.enable = true;
+    limine.efiSupport = true;
 
-      efi.canTouchEfiVariables = true;
-      timeout = 10;
-    };
-
-    plymouth = {
-      enable = true;
-      theme = "cuts";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = ["cuts"];
-        })
-      ];
-    };
-
-    consoleLogLevel = 3;
-    initrd.verbose = false;
-    kernelParams = [
-      "quiet"
-      "udev.log_level=3"
-      "systemd.show_status=auto"
-    ];
+    efi.canTouchEfiVariables = true;
+    timeout = 10;
   };
+
+  boot.plymouthWithCuts.enable = true;
 
   age.identityPaths = ["/persist/etc/ssh/ssh_host_ed25519_key"];
 
