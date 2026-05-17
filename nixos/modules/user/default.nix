@@ -3,9 +3,9 @@
   inherit (lib) mkEnableOption mkIf;
 in {
   imports = [
-    ./desktop
-    ./secrets
-    ./shell
+    ./desktop.nix
+    ./secrets.nix
+    ./shell.nix
   ];
 
   options.userModules.pengo = {

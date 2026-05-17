@@ -11,7 +11,7 @@
       inputs.mangowm.nixosModules.mango
       inputs.agenix.nixosModules.default
       ./user
-      ./system/nix-settings
+      ./system/nix-settings.nix
     ];
 
     options.userModules.pengo._args = lib.mkOption {
