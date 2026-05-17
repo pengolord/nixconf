@@ -15,5 +15,6 @@ _: {
 
     ${import ./completions.nix inputs.nixpkgs}
     ${import ./direnv.nix inputs.nixpkgs}
+    ${import ./zoxide.nix inputs.nixpkgs}
   '';
 }
