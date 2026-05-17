@@ -12,6 +12,7 @@
       inputs.agenix.nixosModules.default
       ./user
       ./system/nix-settings.nix
+      ./system/boot/plymouth.nix
     ];
 
     options.userModules.pengo._args = lib.mkOption {

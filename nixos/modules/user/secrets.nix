@@ -1,5 +1,5 @@
 {
   age.secrets = {
-    pengoHashedPasswordFile.file = ../../../../secrets/user/hashedPasswordFile.age;
+    pengoHashedPasswordFile.file = ../../../secrets/user/hashedPasswordFile.age;
   };
 }

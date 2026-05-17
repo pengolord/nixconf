@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 } @ moduleArgs: let
   cfg = config.userModules.pengo;
