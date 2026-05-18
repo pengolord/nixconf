@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   imports = [
+    ./services
     ./hardware.nix
     ./users.nix
   ];

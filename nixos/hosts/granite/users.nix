@@ -32,15 +32,4 @@
       isNormalUser = true;
     };
   };
-
-  users.groups = {
-    git = {
-      members = [
-        "pengo"
-        "0m3n"
-        "prism"
-        "gran"
-      ];
-    };
-  };
 }
