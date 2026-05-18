@@ -20,7 +20,7 @@ in {
     programs.direnv.enable = mkDefault true;
 
     users.users.pengo = {
-      shell = getExe pkgs.nushell;
+      shell = getExe pkgs-self.nushell;
       packages = with pkgs // pkgs-self; [
         comma
         git
