@@ -20,8 +20,6 @@
       inputs.home-manager.follows = "";
       inputs.darwin.follows = "";
     };
-    adios.follows = "adios-wrappers/adios";
-    adios-wrappers.url = "github:llakala/adios-wrappers";
   };
 
   outputs = inputs: import ./. inputs;

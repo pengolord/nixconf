@@ -1,26 +1,24 @@
 {
   inputs,
-  lib,
   pkgs,
   self,
+  sources,
   system,
   ...
 }: let
-  inherit (inputs.adios) adios;
-  inherit (inputs.adios-wrappers) wrapperModules;
   inherit (builtins) mapAttrs pathExists;
-  inherit (lib) filterAttrs recursiveUpdate;
+  inherit (pkgs.lib) filterAttrs  recursiveUpdate;
+  inherit (adios.lib) importModules;
 
-  overrides = adios.lib.importModules ./.;
+  adios = import "${sources.adios}/adios";
+  adios-wrappers = import sources.adios-wrappers { inherit (sources) adios; };
 
-  root = {
-    modules = recursiveUpdate wrapperModules overrides;
-  };
+  root.modules = recursiveUpdate adios-wrappers (importModules ./.);
 
   tree = adios root {
     options = {
       "/nixpkgs" = {
-        inherit lib pkgs;
+        inherit pkgs;
       };
       "/flake" = {
         inherit inputs system;
@@ -29,4 +27,10 @@
     };
   };
 in
-  filterAttrs (package: _: pathExists ./${package}/default.nix) (mapAttrs (_: module: module {}) tree.modules)
+  filterAttrs
+  (package: _: pathExists ./${package}/default.nix)
+  (
+    mapAttrs
+    (_: module: module {})
+    tree.modules
+  )
