@@ -168,21 +168,6 @@
         "type": "github"
       }
     },
-    "mnw": {
-      "locked": {
-        "lastModified": 1778541201,
-        "narHash": "sha256-n0twkzWexzjsoDycOTvvQNuGEdg62UiNHYcFCduYpKI=",
-        "owner": "Gerg-L",
-        "repo": "mnw",
-        "rev": "1a3573fc9d2486738fe0b2cacc5cd10dd5f3a445",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gerg-L",
-        "repo": "mnw",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1754028485,
@@ -305,7 +290,6 @@
         "apple-silicon": "apple-silicon",
         "impermanence": "impermanence",
         "mangowm": "mangowm",
-        "mnw": "mnw",
         "nixpkgs": "nixpkgs_4",
         "noctalia-shell": "noctalia-shell"
       }

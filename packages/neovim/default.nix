@@ -1,9 +1,11 @@
 {
-  inputs,
+  sources,
   pkgs,
   ...
-}:
-inputs.mnw.lib.wrap pkgs {
+}: let
+  mnw = import sources.mnw;
+in
+mnw.lib.wrap pkgs {
   neovim = pkgs.neovim-unwrapped;
 
   initLua = ''

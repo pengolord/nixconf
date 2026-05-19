@@ -5,6 +5,8 @@
 } @ inputs: let
   inherit (nixpkgs) lib;
 
+  sources = import ./sources;
+
   # Each system that this configuration's packages & other system-dependant outputs support.
   systems = [
     "x86_64-linux"
@@ -13,7 +15,7 @@
 
   # Arguments that are passed to every imported file that does not require 'system' to be set.
   args = {
-    inherit inputs lib self;
+    inherit inputs lib self sources;
   };
 
   # Arguments that are passed to every imported file that *does* require 'system' to be set. Includes all of the previous arguments too.

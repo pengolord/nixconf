@@ -1,10 +1,3 @@
-{
-  inputs,
-  system,
-  ...
-} @ args:
-{
-  agenix = inputs.agenix.packages.${system}.default;
+args: {
   neovim = import ./neovim args;
-}
-// import ./wrapped args
+} // import ./wrapped args
