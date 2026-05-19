@@ -1,6 +1,7 @@
 {
   inputs,
   self,
+  sources,
   lib,
   ...
 } @ args: {
@@ -8,7 +9,7 @@
     # These modules will be imported by default.
     # As long as they align with the nix module system's philosphy, they should be gated by an enable option, so it doesn't matter if you just import them.
     imports = [
-      inputs.mangowm.nixosModules.mango
+      (import "${sources.mangowm}/nix/nixos-modules.nix" {})
       inputs.agenix.nixosModules.default
       ./user
       ./system/nix-settings.nix

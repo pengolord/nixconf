@@ -9,3 +9,12 @@ rev = "78ac392edcd3831c20e76022306f8182088f9d4b"
 [adios-wrappers]
 url = "https://github.com/llakala/adios-wrappers"
 rev = "163c95984ab840a60dcef0bfdf64ece90ffc4b70"
+
+[mangowm]
+url = "https://github.com/mangowm/mango"
+rev = "4be9e8035502a30f6b5ccb6a6e751715c2870e02"
+
+[noctalia-shell]
+url = "https://github.com/noctalia-dev/noctalia-shell"
+ref = "v5"
+rev = "00f3894390fa1953a0eaa1570fee86805f129bce"

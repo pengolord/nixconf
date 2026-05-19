@@ -10,6 +10,10 @@ _: {
     in
       writeText "config.conf" (toMango {} (import ./settings.nix inputs));
 
-    package.defaultFunc = {inputs}: inputs.flake.inputs.mangowm.packages.${inputs.flake.system}.default;
+    package.defaultFunc = {inputs}: let
+      inherit (inputs.nixpkgs) pkgs;
+      mangowm = "${inputs.flake.sources.mangowm}/nix";
+    in
+      pkgs.callPackage mangowm {};
   };
 }

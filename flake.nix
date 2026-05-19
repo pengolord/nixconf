@@ -4,11 +4,6 @@
   inputs = {
     # Package Repositories
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    noctalia-shell.url = "github:noctalia-dev/noctalia-shell/v5";
-    mangowm = {
-      url = "github:mangowm/mango";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # System Dependencies
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";

@@ -7,11 +7,11 @@
   ...
 }: let
   inherit (builtins) mapAttrs pathExists;
-  inherit (pkgs.lib) filterAttrs  recursiveUpdate;
+  inherit (pkgs.lib) filterAttrs recursiveUpdate;
   inherit (adios.lib) importModules;
 
   adios = import "${sources.adios}/adios";
-  adios-wrappers = import sources.adios-wrappers { inherit (sources) adios; };
+  adios-wrappers = import sources.adios-wrappers {inherit (sources) adios;};
 
   root.modules = recursiveUpdate adios-wrappers (importModules ./.);
 
@@ -21,7 +21,7 @@
         inherit pkgs;
       };
       "/flake" = {
-        inherit inputs system;
+        inherit inputs sources system;
         pkgs = self.packages.${system};
       };
     };

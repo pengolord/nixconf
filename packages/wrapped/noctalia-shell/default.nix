@@ -30,7 +30,14 @@
     package = {
       type = types.derivation;
       description = "The noctalia package to be wrapped.";
-      defaultFunc = {inputs}: inputs.flake.inputs.noctalia-shell.packages.${inputs.flake.system}.default;
+      defaultFunc = {inputs}: let
+        inherit (inputs.nixpkgs) pkgs;
+        noctalia-shell = "${inputs.flake.sources.noctalia-shell}/nix/package.nix";
+      in
+        pkgs.callPackage noctalia-shell {
+          shortRev = "dirty";
+          version = "v5";
+        };
     };
   };
 

@@ -6,4 +6,6 @@ in {
   mnw = fetchGit lock.mnw;
   adios = fetchGit lock.adios;
   adios-wrappers = fetchGit lock.adios-wrappers;
+  mangowm = fetchGit lock.mangowm;
+  noctalia-shell = fetchGit lock.noctalia-shell;
 }
