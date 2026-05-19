@@ -10,7 +10,7 @@
     # As long as they align with the nix module system's philosphy, they should be gated by an enable option, so it doesn't matter if you just import them.
     imports = [
       (import "${sources.mangowm}/nix/nixos-modules.nix" {})
-      inputs.agenix.nixosModules.default
+      "${sources.agenix}/modules/age.nix"
       ./user
       ./system/nix-settings.nix
       ./system/boot/plymouth.nix

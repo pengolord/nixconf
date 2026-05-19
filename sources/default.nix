@@ -8,4 +8,5 @@ in {
   adios-wrappers = fetchGit lock.adios-wrappers;
   mangowm = fetchGit lock.mangowm;
   noctalia-shell = fetchGit lock.noctalia-shell;
+  agenix = fetchGit lock.agenix;
 }

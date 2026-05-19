@@ -8,13 +8,6 @@
     # System Dependencies
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
     impermanence.url = "github:nix-community/impermanence";
-
-    # Helpers
-    agenix = {
-      url = "github:ryantm/agenix";
-      inputs.home-manager.follows = "";
-      inputs.darwin.follows = "";
-    };
   };
 
   outputs = inputs: import ./. inputs;
