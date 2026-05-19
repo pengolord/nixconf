@@ -22,3 +22,7 @@ rev = "00f3894390fa1953a0eaa1570fee86805f129bce"
 [agenix]
 url = "https://github.com/ryantm/agenix"
 rev = "b027ee29d959fda4b60b57566d64c98a202e0feb"
+
+[impermanence]
+url = "https://github.com/nix-community/impermanence"
+rev = "7b1d382faf603b6d264f58627330f9faa5cba149"

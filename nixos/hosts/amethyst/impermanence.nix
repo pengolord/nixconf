@@ -1,5 +1,7 @@
-{inputs, ...}: {
-  imports = [inputs.impermanence.nixosModules.impermanence];
+{sources, ...}: {
+  imports = [
+    "${sources.impermanence}/nixos.nix"
+  ];
 
   environment.persistence."/persist" = {
     enable = true;
