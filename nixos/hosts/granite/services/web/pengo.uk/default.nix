@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services.nginx.virtualHosts."pengo.uk" = {
     forceSSL = true;
     useACMEHost = "pengo.uk";
